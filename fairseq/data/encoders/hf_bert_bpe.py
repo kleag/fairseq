@@ -22,7 +22,9 @@ class BertBPEConfig(FairseqDataclass):
 class BertBPE(object):
     def __init__(self, cfg):
         try:
-            from transformers import BertTokenizer
+            from pytorch_transformers import BertTokenizer
+            from pytorch_transformers.tokenization_utils import clean_up_tokenization
+            self.clean_up_tokenization = clean_up_tokenization
         except ImportError:
             raise ImportError(
                 "Please install transformers with: pip install transformers"
